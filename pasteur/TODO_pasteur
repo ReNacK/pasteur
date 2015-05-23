@@ -1,0 +1,201 @@
+Diagramme classe
+	En parcourant les fichiers on crée de nouveaux médecins (qui appartiennent à la clinique)
+		possède une charge de travail
+		méthode existe
+		un numéro
+		un nom/prénom
+	En parcourant les fichiers on crée de nouveaux patients
+		possède une liste de factures
+		possède une liste de paiements
+		possède une liste de consultations
+		méthode existe
+		méthode véifier si impayés depuis N jours
+		possède un booléen qui indique si le rapport facture/paiement est OK
+	La clinique 
+		possède une charge de travail 
+		une liste de Fichier de facture
+		une liste de Ficher de consultations
+		une liste de Fichier de paiement	
+		une liste de médecins 
+		une liste patient
+	Les factures 
+		possèdent une date de facturation 	
+		une date d'acte 
+		un montant 
+		Un booléen est_payé
+		une date de paiement
+		le ficher où elle se trouve
+		la ligne du fichier correspondant
+	Les paiements 
+		possèdent une date
+		une date d'acte 
+		un montant
+		Un booléen est_facturé	
+		le fichier où il se trouve
+		la ligne du fichier correspondant
+	Les consultations 
+		possèdent une date d'acte
+		une date de facturation
+		Si paiement effectué le jour même on crée un paiement correspondant
+		le fichier où elle se trouve
+		la ligne du fichier correspondant
+	Un fichier contient
+		le chemin du fichier
+		un booléen impayé
+		un booléen erreurGrave (si paiement sans facture/consultation)
+		un booléen erreurSimple (si facture/consultation non identifiable)
+		une liste indiquant les paiements sans facture (erreurs graves)
+		une liste indiquant les factures/consultations non identifiables (erreurs simples)
+		une liste indiquant les factures impayées
+
+modèle
+	parcourt une première fois les fichiers pour créer les médecins, patients, liste factures, paiements et consultations,la charge de travail, et fichiers
+	si durant le parcours une facture est non identifiable (pas de nom sur facture par exemple)
+		on passe le booléen erreurSimple du fichier correspondant à vrai
+		on rajoute la facture dans la liste des erreurs simples du fichier
+	fsi  
+	pour chaque client on vérifie :
+		si la somme des paiements == à la somme des factures alors
+			on met tous les booléens des listes factures, paiements et consultations à vrai
+		sinon si paiements > factures alors
+			pour chaque facture de la liste des factures 
+				si paiement correspondant dans liste paiement alors 
+					booléen facture = vrai
+					booléen paiement = vrai
+					(facture) date paiement = (paiement)date paiement
+			fpour
+			pour chaque consultations de la liste des consultations 
+				si paiement correspondant dans liste paiement alors 
+					booléen consutation = vrai
+					booléen paiement = vrai
+					(consultation) date paiement = (paiement)date paiement
+			fpour
+			si booléen dans paiement == faux
+				on passe le booléen du fichier erreurGrave à vrai
+				on rajoute le paiement dans la liste correspondant aux erreurs graves du fichier
+			fsi
+		sinon si factures > paiements alors
+			pour chaque facture de la liste des factures 
+				si paiement correspondant dans liste paiement alors 
+					booléen facture = vrai
+					booléen paiement = vrai
+					(facture) date paiement = (paiement)date paiement
+			fpour
+			pour chaque consultation de la liste des consultations 
+				si paiement correspondant dans liste paiement alors 
+					booléen consutation = vrai
+					booléen paiement = vrai
+					(consultation) date paiement = (paiement)date paiement
+			fpour
+			si booléen dans (facture || consultation) == faux
+				on passe le booléen impayé du fichier à vrai
+				on rajoute la facture/consultation dans la liste correspondant aux impayés du fichier
+			fsi
+		fsi 
+	Pour chaque fichier 
+		si booléen impayé == vrai alors
+			on affiche toutes les lignes correspondants aux impayés de la liste (dans un String)
+			(clinique) booléen impayé = vrai
+			(mise à jour vues)
+		fsi
+		si booléen erreurGrave == vrai alors
+			on affiche le nom du fichier et les lignes posant problèmes (dans un String)
+			(clinique) booléen erreurGrave = vrai
+			(mise à jour vues)
+		fsi
+		si booléen erreurSimple == vrai alors
+			on affiche le fichier posant problème (pour modification) (dans un String)
+			(clinique) booléen erreurSimple = vrai
+			(mise à jour vues)
+		fsi
+	fpour
+
+IG 
+	intègrer modèle
+	choisir le N dans les impayés depuis N jours
+	indiquer erreur (paiement sans facture) dans console (ou nouvel onglet ?)
+	modifier erreurs (facture sans nom) en direct dans un nouvel onglet
+	exporter impayés
+	un onglet impayés
+	un panel console (voir pour faire un genre de table cliquable qui téléporte à l'erreur)
+	exporter fichiers factures modifiés (s'il y avait des erreurs)
+	stats 
+		stats sur durée moyenne avant paiement (après facturation)
+		pour chaque patient 
+			pour chaque facture
+				délai = délai + date paiement - date facture 
+			fp
+			délai_patient = délai_patient + (délai / nb facture)
+		fpour 
+		délai_total = délai_patient / nb_patient
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+Version 2.0
+Diagramme classe
+	En parcourant les fichiers on crée de nouveaux médecins (qui appartiennent à la clinique)
+		possède une charge de travail
+		méthode existe
+		un numéro
+		un nom/prénom
+		une liste de facture
+		une liste de paiement
+	La clinique 
+		possède une charge de travail 
+		une liste de Fichier de facture
+		une liste de Ficher de consultations
+		une liste de Fichier de paiement	
+		une liste de médecins 
+		une liste patient
+	Les factures 
+		possèdent une date de facturation 	
+		une date d'acte 
+		un montant 
+		un paiement
+		une date de paiement
+		le ficher où elle se trouve
+		la ligne du fichier correspondant
+	Les paiements 
+		possèdent une date
+		une date d'acte 
+		un montant
+		le fichier où il se trouve
+		la ligne du fichier correspondant
+	Les consultations 
+		possèdent une date d'acte
+		une date de facturation
+		Si paiement effectué le jour même on crée un paiement correspondant
+		le fichier où elle se trouve
+		la ligne du fichier correspondant
+	Un fichier contient
+		le chemin du fichier
+		un booléen impayé
+		un booléen erreurGrave (si paiement sans facture/consultation)
+		un booléen erreurSimple (si facture/consultation non identifiable)
+		une liste indiquant les paiements sans facture (erreurs graves)
+		une liste indiquant les factures/consultations non identifiables (erreurs simples)
+		une liste indiquant les factures impayées
+		
+		
+		
+		
+on parcourt le fichier de facture et on créé les médecins correspondant ainsi que les listes de facture.
+On parcourt les fichiers de paiement, oon remplit les listes de paiements.
+
+On cherche à faire correspondre les paiements avec les factures, on joue sur les booléen de facture et paiement
+Pour chaque facture n'ayant pas de paiement alors IMPAYE
+Pour chaque paiement, si le booléen est faux (cad non payé) alors ERREUR, on cherche les factures non payées pouvant correspondre et on les surligne en rouge

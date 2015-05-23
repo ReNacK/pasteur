@@ -1,0 +1,8 @@
+affichge console 2h
+affichage impayés 3h
+affichage erreur + modif direct 5h
+stats 5h
+automatisation 10h
+
+
+total 25h

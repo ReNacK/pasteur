@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_31"/>
+	<classpathentry kind="lib" path="itext/itext-pdfa-5.5.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="itext/itext-pdfa-5.5.2-sources.jar"/>
+	<classpathentry kind="lib" path="itext/itext-pdfa-5.5.2.jar"/>
+	<classpathentry kind="lib" path="itext/itext-xtra-5.5.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="itext/itext-xtra-5.5.2-sources.jar"/>
+	<classpathentry kind="lib" path="itext/itext-xtra-5.5.2.jar"/>
+	<classpathentry kind="lib" path="itext/itextpdf-5.5.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="itext/itextpdf-5.5.2-sources.jar"/>
+	<classpathentry kind="lib" path="itext/itextpdf-5.5.2.jar"/>
+	<classpathentry kind="lib" path="jfreechart-1.0.19/lib/jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="jfreechart-1.0.19/lib/jfreechart-1.0.19.jar"/>
+	<classpathentry kind="lib" path="poi-3.9.jar"/>
+	<classpathentry kind="lib" path="lib/sqlite-jdbc4-3.8.2-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
